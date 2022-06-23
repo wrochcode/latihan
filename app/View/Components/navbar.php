@@ -27,6 +27,7 @@ class navbar extends Component
             'Home' => '/',
             'Profile' => '/profile',
             'Contact' => '/contact',
+            'Task' => '/tasks',
             'Store' => '/store',
             'Blog' => '/blog'
         ];

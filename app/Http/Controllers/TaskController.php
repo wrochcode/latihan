@@ -11,10 +11,26 @@ class TaskController extends Controller
     {
      
         return view('task.index', [
-            'tasks' => DB::table('tasks')->get(),
+            // 'tasks' => DB::table('tasks')->get(),
+            'tasks' => DB::table('tasks')->orderBy('id', 'desc')->get(),
         ]);
         // $tasks = DB::table('tasks')->get();
         // // dd($task);
         // return view('task.index', compact('tasks'));
+    }
+
+    // public function create()
+    // {
+    //     return view('task.create');
+    // }
+
+    public function store(Request $request)
+    {
+        DB::table('tasks')->insert([
+            'list'=> $request->list,
+        ]);
+        // return redirect('tasks/create');
+        // return redirect()->back();
+        return back();
     }
 }
