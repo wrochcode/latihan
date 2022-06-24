@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('list',191);
-            // $table->boolean('mark')->default(false);   add_mark_to_tasks_table
+            $table->boolean('mark')->default(false);  
+            // add_mark_to_tasks_table
 
             // 1  $table-> boolean('mark')->after('list');
-            // 2 $table->dropColumn('mark');
+            // 2  $table->dropColumn('mark');
+            //   $table->dropColumn('mark')->default(false);
             $table->timestamps();
         });
     }
