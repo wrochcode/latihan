@@ -10,7 +10,13 @@
     <ul style="list-style-type: none">
         @foreach ($tasks as $index => $task)
             <li>
-                <div>{{ $index+1 }} - {{ $task->list }} -
+                <div>{{ $index+1 }} - {{ $task->list }} - 
+                    @if ($task->mark == 0)
+                        Unfinish
+                    @else
+                        Finished
+                    @endif
+                     - 
                         <a style="color: rgb(32, 173, 255)" href="/tasks/{{ $task->id }}/edit">Edit</a> |
                         <form action="/tasks/{{ $task->id }}" method="POST" style="display: inline">
                             @csrf

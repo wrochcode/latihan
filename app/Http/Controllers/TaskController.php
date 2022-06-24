@@ -31,6 +31,7 @@ class TaskController extends Controller
     {
         Task::create([
             'list'=> $request->list,
+            'mark'=> false,
         ]);
         // Task::insert([
         //     'list'=> $request->list,
@@ -59,7 +60,9 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         // DB::table('tasks')->where('id', $id)-> update(['list'=> $request->list]);
-        Task::find($id)->update(['list'=> $request->list]);
+        Task::find($id)->update([
+            'list'=> $request->list,
+        ]);
         return redirect('tasks');
     }
 

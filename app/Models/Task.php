@@ -9,6 +9,7 @@ class Task extends Model
 {
     use HasFactory;
 
-    protected $table = 'another_table';
+    // protected $table = 'another_table';
+    protected $table = 'tasks';
     protected $guarded = [];
 }
