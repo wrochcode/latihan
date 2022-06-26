@@ -9,7 +9,8 @@
                 <div class="card">
                     <div class="card-header">Create New Task</div>
                     <div class="card-body">
-                        <form action="/tasks" class="d-flex" style="margin-bottom: 20px" method="post">
+                        {{-- <form action="/tasks" class="d-flex" style="margin-bottom: 20px" method="post"> --}}
+                        <form action="{{ route('tasks.create') }}" class="d-flex" style="margin-bottom: 20px" method="post">
                             @csrf
                             <input class="form-control me-2" type="text" name="list" placeholder="The name of task">
                             <button class="btn btn-primary" type="submit">Add</button>
@@ -28,8 +29,8 @@
                         @else
                             Finished
                         @endif --}}
-                        <a class="btn btn-primary me-2"href="/tasks/{{ $task->id }}/edit">Edit</a>
-                        <form action="/tasks/{{ $task->id }}" method="POST">
+                        <a class="btn btn-primary me-2"href="{{ route('tasks.edit',$task->id) }}">Edit</a>
+                        <form action="{{ route('tasks.destroy',$task->id) }}" method="POST">
                             @csrf
                             @method("delete")
                             <button type="submit" class="btn btn-danger">Delete</button>
