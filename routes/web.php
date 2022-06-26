@@ -4,6 +4,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileInformationController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -41,22 +42,26 @@ Route::resource('tasks', TaskController::class);
 // Route::view('posts/first-post',  'posts.first-post');
 
 // // Route::get('profile', function (Request $request) {
-// Route::get('profile/{username}/{post}', function ($username,$post) {
-//     // $name = $request-> name;
-
-//     // ======================================================================
-//     // $name = $request->get('name');
-//     // return "My name is excel";
+    // Route::get('profile/{username}/{post}', function ($username,$post) {
+        //     // $name = $request-> name;
+        
+        //     // ======================================================================
+        //     // $name = $request->get('name');
+        //     // return "My name is excel";
 //     // return view('profile', compact('name')); 
 //     // ======================================================================
 //     return view('profile', ['name'=> $username, 'post'=> $post]); 
 // });
 // -------------------------------------------------------------------------------------------------------------------------------
 
+Route::get('users', [UserController::class, 'index'] );
+// Route::get('users/{id}', [UserController::class, 'show'] );
+Route::get('users/{user:username}', [UserController::class, 'show'] )->name('user.show');
+// Route::get('users/{user}', [UserController::class, 'show'] )->name('user.show');
 
 // Route::get('profile', function () {
-//     $name = "company profile";
-//     return view('profile', ['name' => $name]);
-//     // return view('profile', compact('name'));
-//     // return "my name is excel";
-// });
+    //     $name = "company profile";
+    //     return view('profile', ['name' => $name]);
+    //     // return view('profile', compact('name'));
+    //     // return "my name is excel";
+    // });

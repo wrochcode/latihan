@@ -10,7 +10,7 @@
                     <div class="card-header">Create New Task</div>
                     <div class="card-body">
                         {{-- <form action="/tasks" class="d-flex" style="margin-bottom: 20px" method="post"> --}}
-                        <form action="{{ route('tasks.create') }}" class="d-flex" style="margin-bottom: 20px" method="post">
+                        <form action="{{ route('tasks.store') }}" class="d-flex" style="margin-bottom: 20px" method="post">
                             @csrf
                             <input class="form-control me-2" type="text" name="list" placeholder="The name of task">
                             <button class="btn btn-primary" type="submit">Add</button>

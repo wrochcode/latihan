@@ -55,10 +55,11 @@ class TaskController extends Controller
         return back();
     }
     
-    public function edit($id)
+    public function edit(Task $id)
+    // public function edit($id)
     {
-        // $task =Task::where('id', $id)->first();
         $task =Task::find($id);//only id
+        // $task =Task::where('id', $id)->first();
         // $task = DB::table('tasks')->where('id', $id)->first();
         return view('task.edit', ['task'=>$task]);
     }

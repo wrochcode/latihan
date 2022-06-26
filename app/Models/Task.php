@@ -13,4 +13,9 @@ class Task extends Model
     protected $table = 'tasks';
     protected $fillable = ['list'];
     // protected $guarded = [];
+
+    // public function getRouteKeyName()
+    // {
+    //     return
+    // }
 }

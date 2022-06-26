@@ -17,6 +17,7 @@
                             {{ $task->id }}
                             <input style="margin-left: 7px inline" class="form-control" type="text" name="list" value="{{ $task->list }}" placeholder="{{ $task->list }}">
                         </div>
+                        <a href="{{  route('tasks.index') }}" class="btn btn-danger" >Cancel</a>
                         <button class="btn btn-primary" type="submit">Update</button>
                     </form>
                 </ul>
