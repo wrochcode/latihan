@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }}  | Latihan</title>
     {{-- <link rel="stylesheet" href={{ asset('/css/style.css') }}> --}}
-    <link rel="stylesheet" href="/css/style.css">
+    {{-- <link rel="stylesheet" href="/css/bootstrap.min.css"> --}}
+    <link rel="stylesheet" href="/css/app.css">
     {{-- @yield('styles') --}}
 
     {{ $styles }}
@@ -22,6 +23,11 @@
     {{-- @include('layouts.navbar') --}}
     <x-navbar></x-navbar>
     {{-- @yield('content') --}}
-    {{ $slot }}
+    <div class="pt-4">
+        {{ $slot }}
+    </div>
+
+    {{-- <script src="/js/botstrap.min.js"></script> --}}
+    <script src="/js/app.js"></script>
 </body>
 </html>

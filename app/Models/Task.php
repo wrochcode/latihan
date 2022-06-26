@@ -11,5 +11,6 @@ class Task extends Model
 
     // protected $table = 'another_table';
     protected $table = 'tasks';
-    protected $guarded = [];
+    protected $fillable = ['list'];
+    // protected $guarded = [];
 }

@@ -29,10 +29,16 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
-        Task::create([
-            'list'=> $request->list,
-            'mark'=> false,
-        ]);
+        
+        Task::create($request->all());
+        
+        // ---------------------------------------------------------
+        // Task::create([
+        //     'list'=> $request->list,
+        //     'mark'=> false,
+        // ]);
+        // ---------------------------------------------------------
+
         // Task::insert([
         //     'list'=> $request->list,
         // ]);

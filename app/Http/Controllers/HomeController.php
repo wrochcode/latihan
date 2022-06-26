@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    // php artisan make:controller PostController -m Post
+    // ===========================================================================================
     // public function index()
     // {
     //     return view('home');
