@@ -27,6 +27,6 @@ class AppLayout extends Component
      */
     public function render()
     {
-        return view('layouts.app', ['title'=>'excel']);
+        return view('layouts.app');
     }
 }

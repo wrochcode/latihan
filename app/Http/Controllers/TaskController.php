@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Http\Requests\TaskRequest;//baru
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -27,9 +28,21 @@ class TaskController extends Controller
     //     return view('task.create');
     // }
 
-    public function store(Request $request)
+    // public function store(Request $request)
+    public function store(TaskRequest $request)
     {
-        
+        // validation
+        // php artisan make:request TaskRequest
+        // ---------------------------------------------------------
+        // $request->validate([
+        //     // 'list'=>['required', 'min:3'],
+        //     // 'list'=>['required', 'min:3', 'alpha'],
+        //     // 'list'=>['required', 'min:3', 'alpha_num'],
+        //     'list'=>['required', 'min:3', 'string'],
+        // ]);
+
+
+        // ---------------------------------------------------------
         Task::create($request->all());
         
         // ---------------------------------------------------------
@@ -55,21 +68,21 @@ class TaskController extends Controller
         return back();
     }
     
-    public function edit(Task $id)
+    public function edit(Task $task)
     // public function edit($id)
     {
-        $task =Task::find($id);//only id
+        // $task =Task::find($id);//only id
+        // dd($task);
         // $task =Task::where('id', $id)->first();
         // $task = DB::table('tasks')->where('id', $id)->first();
         return view('task.edit', ['task'=>$task]);
     }
 
-    public function update(Request $request, $id)
+    // public function update(Request $request, $id)
+    public function update(TaskRequest $request, $id)
     {
         // DB::table('tasks')->where('id', $id)-> update(['list'=> $request->list]);
-        Task::find($id)->update([
-            'list'=> $request->list,
-        ]);
+        Task::find($id)->update(['list'=> $request->list,]);
         return redirect('tasks');
     }
 

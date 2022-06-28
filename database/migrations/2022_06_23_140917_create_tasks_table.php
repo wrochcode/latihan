@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('list',191);
+            // $table->string('list',191)->nullable();
             $table->boolean('mark')->default(false);  
             // add_mark_to_tasks_table
 
