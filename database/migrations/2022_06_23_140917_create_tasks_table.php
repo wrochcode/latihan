@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('list',191);
             // $table->string('list',191)->nullable();
-            $table->boolean('mark')->default(false);  
+            $table->boolean('mark')->default(false); 
             // add_mark_to_tasks_table
 
             // 1  $table-> boolean('mark')->after('list');
