@@ -16,7 +16,9 @@ class TaskController extends Controller
             // 'tasks' => DB::table('tasks')->get(),
             // --------------------------------------------------------------------------
             // 'tasks' => DB::table('tasks')->orderBy('id', 'desc')->get(),
+            'task' => new Task,
             'tasks' => Task::orderBy('id', 'desc')->get(),
+            'submit' => 'Create',
         ]);
         // $tasks = DB::table('tasks')->get();
         // // dd($task);
@@ -75,7 +77,10 @@ class TaskController extends Controller
         // dd($task);
         // $task =Task::where('id', $id)->first();
         // $task = DB::table('tasks')->where('id', $id)->first();
-        return view('task.edit', ['task'=>$task]);
+        return view('task.edit', [
+            'task'=>$task,
+            'submit'=> 'Update'
+        ]);
     }
 
     // public function update(Request $request, $id)

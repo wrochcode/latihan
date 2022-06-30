@@ -25,7 +25,8 @@ class TaskRequest extends FormRequest
     public function rules()
     {
         return [
-            'list'=>['required', 'min:3', 'alpha'],
+            'list'=>['required', 'min:3'],
+            // 'list'=>['required', 'min:3', 'alpha'],
         ];
     }
 }
