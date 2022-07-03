@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileInformationController;
+use App\Http\Controllers\RegestrationController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -58,6 +59,11 @@ Route::get('users', [UserController::class, 'index'] );
 // Route::get('users/{id}', [UserController::class, 'show'] );
 Route::get('users/{user:username}', [UserController::class, 'show'] )->name('user.show');
 // Route::get('users/{user}', [UserController::class, 'show'] )->name('user.show');
+
+// -------------------------------------------------------------------------------------------------------------------------------
+
+Route::get('register', [RegestrationController::class, 'create'])->name('register');
+Route::post('register', [RegestrationController::class, 'store'])->name('register');
 
 // Route::get('profile', function () {
     //     $name = "company profile";
