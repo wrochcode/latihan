@@ -15,11 +15,19 @@ class RegestrationController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'username'=> ['required', 'min:3', 'max:25', 'alpha_num'],
+            'username'=> ['required', 'unique:users,username', 'min:3', 'max:25', 'alpha_num'],
             'name'=> ['required', 'min:3', 'string'],
-            'email'=> ['required', 'email'],
+            'email'=> ['required', 'unique:users', 'email'],
             'password'=> ['required', 'min:8'],
         ]);
+
+        // $user = User::where('email', $request->email)
+        //     ->orwhere('username', $request->username)
+        //     ->first();
+
+        // if($user){
+        //     dd("sudah ada");
+        // }
 
         User::create([
             'name'=> $request->name,
@@ -27,6 +35,8 @@ class RegestrationController extends Controller
             'email'=> $request->email,
             'password'=> Hash::make($request->name),
         ]);
+        // session()->put('key','value');
+        session()->flash('success','Thank you, you are now registered.');
         return redirect('/');
     }
 }

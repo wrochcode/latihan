@@ -1,4 +1,29 @@
 <x-app-layout title="Home Page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+                <div class="card">
+                    <div class="card-header">Welcome to My Site</div>
+                    <div class="card-body"><h1>HALUUUUUUUU</h1></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
+
+
+
+
+
+
+
+
+{{-- <x-app-layout title="Home Page"> --}}
     {{-- @section('styles')
     <style>
         body{
@@ -7,7 +32,7 @@
     </style>
         
     @endsection --}}
-    @slot('styles')
+    {{-- @slot('styles')
         <style>
             body{
                 background-color: rgb(108, 4, 4);
@@ -17,7 +42,7 @@
     <h1>Home Page</h1>
 </x-app-layout>
 
-
+ --}}
 
 
 
