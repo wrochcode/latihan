@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileInformationController;
 use App\Http\Controllers\RegestrationController;
 use App\Http\Controllers\TaskController;
@@ -64,6 +65,12 @@ Route::get('users/{user:username}', [UserController::class, 'show'] )->name('use
 
 Route::get('register', [RegestrationController::class, 'create'])->name('register');
 Route::post('register', [RegestrationController::class, 'store'])->name('register');
+
+Route::get('login', [LoginController::class, 'create'])->name('login');
+Route::post('login', [LoginController::class, 'store']);
+
+
+
 
 // Route::get('profile', function () {
     //     $name = "company profile";
