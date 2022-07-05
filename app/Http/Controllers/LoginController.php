@@ -15,19 +15,26 @@ class LoginController extends Controller
     }
 
     public function store(Request $request){
-        $request->validate([
+        $attributes = $request->validate([
             'email'=>['required', 'email'],
             'password'=>['required'],
         ]);
 
-        $user = User::whereEmail($request->email)->first();
-        if($user){
-            if(Hash::check($request->password ,$user->password)){
-                Auth::login($user);
-                return redirect('/')->with('success', 'You are now logded in');
-                // dd($user);
-            }
+        // $credentials = ['email'=>$request->email,'password'=>$request->password];
+        // $credentials = $request->only('email', 'password');
+        // if(Auth::attempt($credentials)){
+        if(Auth::attempt($attributes)){
+            return redirect('/')->with('success', 'You are now logded in');
         }
+
+        // $user = User::whereEmail($request->email)->first();
+        // if($user){
+        //     if(Hash::check($request->password ,$user->password)){
+        //         Auth::login($user);
+        //         return redirect('/')->with('success', 'You are now logded in');
+        //         // dd($user);
+        //     }
+        // }
 
         throw ValidationException::withMessages([
             'email' => 'Your provide credential is not match our records.',
