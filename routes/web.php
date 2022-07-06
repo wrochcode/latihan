@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProfileInformationController;
 use App\Http\Controllers\RegestrationController;
 use App\Http\Controllers\TaskController;
@@ -20,7 +21,10 @@ Route::get('/', HomeController::class);
 // Route::get('profile/{identifier}', [ProfileInformationController::class, '__invoke']);
 
 // -------------------------------------------------------------------------------------------------------------------------------
-Route::resource('tasks', TaskController::class);
+// Route::resource('tasks', TaskController::class);
+// -------------------------------------------------------------------------------------------------------------------------------
+// Route::resource('tasks', TaskController::class)->middleware('auth');
+// -------------------------------------------------------------------------------------------------------------------------------
 // Route::get('tasks', [TaskController::class, 'index']);
 // Route::get('tasks/create', [ TaskController::class, 'create']);
 // Route::post('tasks', [TaskController::class, 'store']);
@@ -63,11 +67,29 @@ Route::get('users/{user:username}', [UserController::class, 'show'] )->name('use
 
 // -------------------------------------------------------------------------------------------------------------------------------
 
-Route::get('register', [RegestrationController::class, 'create'])->name('register');
-Route::post('register', [RegestrationController::class, 'store'])->name('register');
+// Route::get('register', [RegestrationController::class, 'create'])->name('register')->middleware('guest');
+// Route::get('register', [RegestrationController::class, 'create'])->name('register');
+// Route::post('register', [RegestrationController::class, 'store'])->name('register')->middleware('guest');
+// Route::post('register', [RegestrationController::class, 'store'])->name('register');
 
-Route::get('login', [LoginController::class, 'create'])->name('login');
-Route::post('login', [LoginController::class, 'store']);
+// Route::get('login', [LoginController::class, 'create'])->name('login')->middleware('guest');
+// Route::get('login', [LoginController::class, 'create'])->name('login');
+// Route::post('login', [LoginController::class, 'store'])->middleware('guest');
+// Route::post('login', [LoginController::class, 'store']);
+
+
+Route::middleware('auth')->group(function(){
+    Route::resource('tasks', TaskController::class);
+    Route::post('logout', LogoutController::class)->name('logout');
+});
+
+Route::middleware('guest')->group(function(){
+    Route::get('register', [RegestrationController::class, 'create'])->name('register');
+    Route::post('register', [RegestrationController::class, 'store'])->name('register');
+
+    Route::get('login', [LoginController::class, 'create'])->name('login');
+    Route::post('login', [LoginController::class, 'store']);
+});
 
 
 

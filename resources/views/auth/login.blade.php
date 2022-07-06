@@ -26,7 +26,7 @@
                                 @enderror
                             </div>
                             {{-- button:submit.btn.btn-primary --}}
-                            <button type="submit" class="btn btn-primary">Register</button>
+                            <button type="submit" class="btn btn-primary">Login</button>
                         </form>
                     </div>
                 </div>

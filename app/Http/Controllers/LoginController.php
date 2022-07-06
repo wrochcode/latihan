@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +11,11 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('guest');
+    // }
+
     public function create(){
         return view('auth.login');
     }
@@ -24,7 +30,8 @@ class LoginController extends Controller
         // $credentials = $request->only('email', 'password');
         // if(Auth::attempt($credentials)){
         if(Auth::attempt($attributes)){
-            return redirect('/')->with('success', 'You are now logded in');
+            return redirect(RouteServiceProvider::HOME)->with('success', 'You are now logded in');
+            // return redirect('/')->with('success', 'You are now logded in');  
         }
 
         // $user = User::whereEmail($request->email)->first();
